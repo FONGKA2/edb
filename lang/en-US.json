@@ -1,5 +1,5 @@
 {
-  "lang": "en-US",
+  "languageTag": "en-US",
   "plugins": {
     "eponesh_dexiequery": {
       "name": "Dexie DB Query",

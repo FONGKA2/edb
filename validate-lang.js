@@ -14,8 +14,8 @@ for (const [tag, filePath] of Object.entries(translations)) {
     }
     try {
         const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-        if (data.lang !== tag) {
-            console.error(`Language mismatch in ${filePath}: expected '${tag}', got '${data.lang}'`);
+        if (data.languageTag !== tag) {
+            console.error(`Language mismatch in ${filePath}: expected '${tag}', got '${data.languageTag}'`);
             ok = false;
         }
     } catch (err) {
