@@ -1,4 +1,5 @@
 {
+  "lang": "en-US",
   "plugins": {
     "eponesh_dexiequery": {
       "name": "Dexie DB Query",
