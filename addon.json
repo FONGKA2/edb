@@ -4,6 +4,7 @@
   "name": "Dexie DB Query",
   "id": "Eponesh_DexieQuery",
   "version": "2.4.0",
+  "default-language": "en-US",
   "author": "Eponesh",
   "website": "https://www.construct.net",
   "documentation": "https://www.construct.net",
@@ -14,6 +15,9 @@
     "type.js",
     "instance.js"
   ],
+  "translations": {
+    "en-US": "lang/en-US.json"
+  },
   "file-list": [
     "c3runtime/plugin.js",
     "c3runtime/type.js",
