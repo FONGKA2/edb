@@ -1,0 +1,61 @@
+{
+  "is-c3-addon": true,
+  "type": "plugin",
+  "name": "Dexie DB Query",
+  "id": "Eponesh_DexieQuery",
+  "version": "2.4.0",
+  "author": "Eponesh",
+  "website": "https://www.construct.net",
+  "documentation": "https://www.construct.net",
+  "sdk-version": 2,
+  "description": "Dexie資料庫查詢系統，支援path查詢、MD5驗證、簽名驗證，整合fetch和save功能，並提供信任關係管理系統",
+  "editor-scripts": [
+    "plugin.js",
+    "type.js",
+    "instance.js"
+  ],
+  "file-list": [
+    "c3runtime/plugin.js",
+    "c3runtime/type.js",
+    "c3runtime/instance.js",
+    "c3runtime/conditions.js",
+    "c3runtime/actions.js",
+    "c3runtime/expressions.js",
+    "c3runtime/domSide.js",
+    "c3runtime/tweetnacl.js",
+    "lang/en-US.json",
+    "lang/zh-Hant.json",
+    "aces.json",
+    "addon.json",
+    "icon.svg",
+    "instance.js",
+    "plugin.js",
+    "type.js"
+  ],
+  "runtime-scripts": [
+    {
+      "type": "module",
+      "script-path": "c3runtime/plugin.js"
+    },
+    {
+      "type": "module", 
+      "script-path": "c3runtime/type.js"
+    },
+    {
+      "type": "module",
+      "script-path": "c3runtime/instance.js"
+    },
+    {
+      "type": "module",
+      "script-path": "c3runtime/conditions.js"
+    },
+    {
+      "type": "module",
+      "script-path": "c3runtime/actions.js"
+    },
+    {
+      "type": "module",
+      "script-path": "c3runtime/expressions.js"
+    }
+  ]
+}
