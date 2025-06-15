@@ -34,7 +34,7 @@ DexieDBQuery addon 已成功從 SDK V1 升級到 SDK V2。
 ## 功能保持不變
 - 所有原有功能完全保留
 - Dexie 資料庫查詢功能
-- MD5 驗證功能（使用 park-md5）
+- MD5 驗證功能（使用 SparkMD5）
 - 數位簽名驗證功能（使用 TweetNaCl）
 - 日誌記錄功能
 - 所有 Actions、Conditions 和 Expressions
