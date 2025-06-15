@@ -371,4 +371,4 @@ if (typeof nacl === 'undefined') {
 
 ## Development
 
-Run `node validate-lang.js` to verify translation files have correct language tags.
+Run `node validate-lang.js` to verify translation files have a languageTag matching the addon.json entry.
