@@ -24,7 +24,6 @@
     "c3runtime/domSide.js",
     "c3runtime/tweetnacl.js",
     "lang/en-US.json",
-    "lang/zh-Hant.json",
     "aces.json",
     "addon.json",
     "icon.svg",
