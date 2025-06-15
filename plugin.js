@@ -28,6 +28,10 @@ SDK.Plugins.Eponesh_DexieQuery = class DexieQueryPlugin extends SDK.IPluginBase 
             filename: "c3runtime/tweetnacl.js",
             type: "external-dom-script"
         });
+        this._info.AddFileDependency({
+            filename: "c3runtime/spark-md5.js",
+            type: "external-dom-script"
+        });
 
         this._info.SetSupportedRuntimes(['c3']);
 
