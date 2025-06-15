@@ -13,7 +13,7 @@
 - **日誌記錄**: 可選的控制台日誌輸出用於調試
 - **事件觸發**: 查詢成功、失敗和驗證失敗的事件觸發
 - **SDK v2**: 基於最新的 Construct 3 Addon SDK v2
-- **本地MD5計算**: 使用 park-md5 (SparkMD5) 庫進行MD5哈希計算
+- **本地MD5計算**: 使用 SparkMD5 庫進行MD5哈希計算
 - **本地簽名驗證**: 使用 TweetNaCl 庫進行數位簽名驗證
 
 ## Query Multiple Paths 返回格式
@@ -137,7 +137,7 @@ globalThis.processQueryResult = processQueryResult;
 ### 驗證模式說明
 
 1. **MD5驗證** (`needVerify = 1`): 
-   - 使用 park-md5 (SparkMD5) 庫計算文件內容的MD5值
+   - 使用 SparkMD5 庫計算文件內容的MD5值
    - 與資料庫中存儲的MD5值進行比較
    - 確保文件內容完整性
 
@@ -191,7 +191,7 @@ globalThis.processQueryResult = processQueryResult;
 ## 注意事項
 
 - 插件需要全域的`db`物件（Dexie資料庫實例）
-- **MD5驗證**: 使用 park-md5 (SparkMD5) 庫進行本地計算，無需外部函數調用
+- **MD5驗證**: 使用 SparkMD5 庫進行本地計算，無需外部函數調用
 - **簽名驗證**: 使用 TweetNaCl 庫進行本地驗證，無需外部函數調用
 - 每次只處理一個路徑項目，符合要求的設計
 - 所有操作都是異步的
@@ -300,7 +300,7 @@ globalThis.db = db;
 ## 版本歷史
 
 - **版本 2.1.0**: 🚀 本地加密驗證升級
-  - 使用 park-md5 (SparkMD5) 進行本地 MD5 哈希計算
+  - 使用 SparkMD5 進行本地 MD5 哈希計算
   - 使用 TweetNaCl 進行本地數位簽名驗證
   - 移除對外部 runtime.callFunction 的依賴
   - 提升性能和安全性
@@ -334,7 +334,7 @@ globalThis.db = db;
 
 本插件需要以下JavaScript庫：
 
-1. **park-md5 (SparkMD5)**: 用於 MD5 哈希計算
+1. **SparkMD5**: 用於 MD5 哈希計算
    - 可通過 CDN 引入: `https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.2/spark-md5.min.js`
    
 2. **TweetNaCl**: 用於數位簽名驗證  
