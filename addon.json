@@ -31,31 +31,5 @@
     "instance.js",
     "plugin.js",
     "type.js"
-  ],
-  "runtime-scripts": [
-    {
-      "type": "module",
-      "script-path": "c3runtime/plugin.js"
-    },
-    {
-      "type": "module", 
-      "script-path": "c3runtime/type.js"
-    },
-    {
-      "type": "module",
-      "script-path": "c3runtime/instance.js"
-    },
-    {
-      "type": "module",
-      "script-path": "c3runtime/conditions.js"
-    },
-    {
-      "type": "module",
-      "script-path": "c3runtime/actions.js"
-    },
-    {
-      "type": "module",
-      "script-path": "c3runtime/expressions.js"
-    }
   ]
 }
