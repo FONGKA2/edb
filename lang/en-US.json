@@ -1,0 +1,23 @@
+{
+  "plugins": {
+    "eponesh_dexiequery": {
+      "name": "Dexie DB Query",
+      "description": "Dexie database query system with path lookup and MD5 verification",
+      "help-url": "https://www.construct.net",
+      "properties": {
+        "database-name": {
+          "name": "Database name",
+          "desc": "Name of the DexieDB database"
+        },
+        "version": {
+          "name": "Version",
+          "desc": "Database version number"
+        },
+        "enable-log": {
+          "name": "Enable log",
+          "desc": "Output debug log messages"
+        }
+      }
+    }
+  }
+}
