@@ -368,4 +368,7 @@ if (typeof nacl === 'undefined') {
 2. 將它們添加到 Construct 3 項目的 Files 中
 3. 在項目開始時通過 Script 事件載入
 
-**注意**: 請確保在使用 Dexie Query 插件進行 MD5 驗證和簽名驗證之前，這些庫已經完全載入。 
+
+## Development
+
+Run `node validate-lang.js` to verify translation files have correct language tags.
