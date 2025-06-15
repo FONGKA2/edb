@@ -1,20 +1,12 @@
 "use strict";
 
 C3.Plugins.Eponesh_DexieQuery.Acts = {
-    SetDatabase(db)
+    SetDatabase(name)
     {
-        if (db && typeof db === "object" && typeof db.table === "function")
-        {
-            this._db = db;
-        }
-        else if (typeof db === "string")
-        {
-            this._db = globalThis[db] || null;
-        }
+        if (typeof name === "string")
+            this._db = globalThis[name] || null;
         else
-        {
             this._db = null;
-        }
     },
 
     SetEnableLog(enable)
