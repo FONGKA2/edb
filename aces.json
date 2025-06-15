@@ -1,7 +1,7 @@
 {
   "plugin-id": "Eponesh_DexieQuery",
   "plugin-version": "2.4.0",
-  "description": "基於 DexieDB 的信任關係管理系統，提供安全的密鑰管理和信任路徑驗證功能。",
+  "description": "Dexie database query system with optional MD5 and signature verification.",
   "author": "Eponesh",
   "website": "https://www.construct.net",
   "documentation": "https://www.construct.net",
@@ -15,394 +15,38 @@
     "is-shader": false
   },
   "properties": [
-    {
-      "id": "database-name",
-      "name": "資料庫名稱",
-      "desc": "DexieDB 資料庫的名稱",
-      "type": "text",
-      "default": "trustDB"
-    },
-    {
-      "id": "version",
-      "name": "版本",
-      "desc": "資料庫版本號",
-      "type": "integer",
-      "default": 1
-    }
+    { "id": "database-name", "name": "\u8cc7\u6599\u5eab\u540d\u7a31", "desc": "DexieDB \u8cc7\u6599\u5eab\u7684\u540d\u7a31", "type": "text", "default": "trustDB" },
+    { "id": "version", "name": "\u7248\u672c", "desc": "\u8cc7\u6599\u5eab\u7248\u672c\u865f", "type": "integer", "default": 1 },
+    { "id": "enable-log", "name": "\u555f\u7528\u65e5\u8a8c", "desc": "\u662f\u5426\u8f38\u51fa\u8a18\u9304\u8a0a\u606f", "type": "check", "default": false }
   ],
   "ace-categories": {
-    "trust-management": {
-      "name": "信任管理",
-      "description": "管理密鑰和信任關係的功能"
-    },
-    "key-operations": {
-      "name": "密鑰操作",
-      "description": "密鑰生成和驗證相關功能"
-    },
-    "data-access": {
-      "name": "數據訪問",
-      "description": "數據庫訪問和查詢功能"
-    },
-    "query": {
-      "name": "查詢",
-      "description": "基本查詢功能"
-    }
+    "data-access": { "name": "\u6578\u64da\u8a2d\u5b9a", "description": "\u8a2d\u5b9a\u8207\u7d50\u679c\u7ba1\u7406" },
+    "query": { "name": "\u67e5\u8a62", "description": "\u57fa\u672c\u67e5\u8a62\u529f\u80fd" }
   },
   "actions": [
-    {
-      "id": "generate-key-pair",
-      "name": "生成密鑰對",
-      "description": "生成新的公私鑰對",
-      "category": "key-operations",
-      "params": [],
-      "return-type": "object"
-    },
-    {
-      "id": "save-trust-relation",
-      "name": "保存信任關係",
-      "description": "保存或更新信任關係",
-      "category": "trust-management",
-      "params": [
-        {
-          "id": "ikey",
-          "name": "發起者公鑰",
-          "desc": "信任關係發起者的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "target-key",
-          "name": "目標公鑰",
-          "desc": "信任關係目標的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "trust-path",
-          "name": "信任路徑",
-          "desc": "信任關係的路徑描述",
-          "type": "string"
-        },
-        {
-          "id": "trust-level",
-          "name": "信任等級",
-          "desc": "信任關係的等級（0-100）",
-          "type": "number"
-        }
-      ]
-    },
-    {
-      "id": "sign-message",
-      "name": "簽署消息",
-      "description": "使用私鑰對消息進行簽署",
-      "category": "key-operations",
-      "params": [
-        {
-          "id": "private-key",
-          "name": "私鑰",
-          "desc": "用於簽署的私鑰",
-          "type": "string"
-        },
-        {
-          "id": "message",
-          "name": "消息",
-          "desc": "要簽署的消息內容",
-          "type": "string"
-        }
-      ],
-      "return-type": "string"
-    },
-    {
-      "id": "query-path",
-      "scriptName": "QueryPath",
-      "highlight": true,
-      "isAsync": true,
-      "category": "query",
-      "params": [
-        {
-          "id": "path",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "id": "query-path-with-verify",
-      "scriptName": "QueryPathWithVerify",
-      "highlight": true,
-      "isAsync": true,
-      "category": "query",
-      "params": [
-        {
-          "id": "path",
-          "type": "string"
-        },
-        {
-          "id": "need-verify",
-          "type": "number"
-        },
-        {
-          "id": "pub-key",
-          "type": "string",
-          "initialValue": ""
-        }
-      ]
-    },
-    {
-      "id": "set-enable-log",
-      "scriptName": "SetEnableLog",
-      "highlight": false,
-      "category": "data-access",
-      "params": [
-        {
-          "id": "enable-log",
-          "type": "boolean"
-        }
-      ]
-    },
-    {
-      "id": "clear-results",
-      "scriptName": "ClearResults",
-      "highlight": false,
-      "category": "data-access"
-    },
-    {
-      "id": "set-database",
-      "scriptName": "SetDatabase",
-      "highlight": false,
-      "category": "data-access",
-      "params": [
-        {
-          "id": "db-name",
-          "type": "string"
-        }
-      ]
-    }
+    { "id": "query-path", "scriptName": "QueryPath", "highlight": true, "isAsync": true, "category": "query", "params": [ {"id": "path", "type": "string"} ] },
+    { "id": "query-path-with-verify", "scriptName": "QueryPathWithVerify", "highlight": true, "isAsync": true, "category": "query", "params": [ {"id": "path", "type": "string"}, {"id": "need-verify", "type": "number"}, {"id": "pub-key", "type": "string", "initialValue": ""} ] },
+    { "id": "query-multiple-paths", "scriptName": "QueryMultiplePaths", "highlight": false, "isAsync": true, "category": "query", "params": [ {"id": "path-list", "type": "string"}, {"id": "need-verify", "type": "number"} ] },
+    { "id": "query-multiple-paths-callback", "scriptName": "QueryMultiplePathsWithCallback", "highlight": false, "isAsync": true, "category": "query", "params": [ {"id": "path-list", "type": "string"}, {"id": "return-to", "type": "string"}, {"id": "need-verify", "type": "number"} ] },
+    { "id": "set-default-need-verify", "scriptName": "SetDefaultNeedVerify", "highlight": false, "category": "query", "params": [ {"id": "need-verify", "type": "number"} ] },
+    { "id": "set-enable-log", "scriptName": "SetEnableLog", "highlight": false, "category": "data-access", "params": [ {"id": "enable-log", "type": "boolean"} ] },
+    { "id": "clear-results", "scriptName": "ClearResults", "highlight": false, "category": "data-access" },
+    { "id": "set-database", "scriptName": "SetDatabase", "highlight": false, "category": "data-access", "params": [ {"id": "db-name", "type": "string"} ] }
   ],
   "conditions": [
-    {
-      "id": "is-valid-key",
-      "name": "是否有效密鑰",
-      "description": "檢查指定的密鑰是否有效",
-      "category": "key-operations",
-      "params": [
-        {
-          "id": "key",
-          "name": "密鑰",
-          "desc": "要驗證的密鑰",
-          "type": "string"
-        },
-        {
-          "id": "key-type",
-          "name": "密鑰類型",
-          "desc": "密鑰類型（public/private）",
-          "type": "combo",
-          "items": ["public", "private"],
-          "default": "public"
-        }
-      ]
-    },
-    {
-      "id": "has-trust-relation",
-      "name": "存在信任關係",
-      "description": "檢查兩個公鑰之間是否存在信任關係",
-      "category": "trust-management",
-      "params": [
-        {
-          "id": "ikey",
-          "name": "發起者公鑰",
-          "desc": "信任關係發起者的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "target-key",
-          "name": "目標公鑰",
-          "desc": "信任關係目標的公鑰",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "id": "verify-signature",
-      "name": "驗證簽名",
-      "description": "驗證消息簽名是否有效",
-      "category": "key-operations",
-      "params": [
-        {
-          "id": "public-key",
-          "name": "公鑰",
-          "desc": "用於驗證的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "message",
-          "name": "消息",
-          "desc": "原始消息內容",
-          "type": "string"
-        },
-        {
-          "id": "signature",
-          "name": "簽名",
-          "desc": "消息的簽名",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "id": "on-query-success",
-      "scriptName": "OnQuerySuccess",
-      "highlight": true,
-      "category": "query",
-      "isTrigger": true
-    },
-    {
-      "id": "on-query-failed",
-      "scriptName": "OnQueryFailed",
-      "highlight": false,
-      "category": "query",
-      "isTrigger": true
-    },
-    {
-      "id": "on-verify-failed",
-      "scriptName": "OnVerifyFailed",
-      "highlight": false,
-      "category": "query",
-      "isTrigger": true
-    },
-    {
-      "id": "is-last-query-success",
-      "scriptName": "IsLastQuerySuccess",
-      "highlight": false,
-      "category": "query",
-      "isStatic": true
-    },
-    {
-      "id": "is-log-enabled",
-      "scriptName": "IsLogEnabled",
-      "highlight": false,
-      "category": "data-access",
-      "isStatic": true
-    },
-    {
-      "id": "compare-path",
-      "scriptName": "ComparePath",
-      "highlight": false,
-      "category": "query",
-      "isStatic": true,
-      "params": [
-        {
-          "id": "path",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "id": "has-result",
-      "scriptName": "HasResult",
-      "highlight": false,
-      "category": "query",
-      "isStatic": true
-    }
+    { "id": "on-query-success", "scriptName": "OnQuerySuccess", "highlight": true, "category": "query", "isTrigger": true },
+    { "id": "on-query-failed", "scriptName": "OnQueryFailed", "highlight": false, "category": "query", "isTrigger": true },
+    { "id": "on-verify-failed", "scriptName": "OnVerifyFailed", "highlight": false, "category": "query", "isTrigger": true },
+    { "id": "is-last-query-success", "scriptName": "IsLastQuerySuccess", "highlight": false, "category": "query", "isStatic": true },
+    { "id": "is-log-enabled", "scriptName": "IsLogEnabled", "highlight": false, "category": "data-access", "isStatic": true },
+    { "id": "compare-path", "scriptName": "ComparePath", "highlight": false, "category": "query", "isStatic": true, "params": [ {"id": "path", "type": "string"} ] },
+    { "id": "has-result", "scriptName": "HasResult", "highlight": false, "category": "query", "isStatic": true }
   ],
   "expressions": [
-    {
-      "id": "get-trust-level",
-      "name": "獲取信任等級",
-      "description": "獲取兩個公鑰之間的信任等級",
-      "category": "trust-management",
-      "params": [
-        {
-          "id": "ikey",
-          "name": "發起者公鑰",
-          "desc": "信任關係發起者的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "target-key",
-          "name": "目標公鑰",
-          "desc": "信任關係目標的公鑰",
-          "type": "string"
-        }
-      ],
-      "return-type": "number"
-    },
-    {
-      "id": "get-trust-path",
-      "name": "獲取信任路徑",
-      "description": "獲取兩個公鑰之間的信任路徑",
-      "category": "trust-management",
-      "params": [
-        {
-          "id": "ikey",
-          "name": "發起者公鑰",
-          "desc": "信任關係發起者的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "target-key",
-          "name": "目標公鑰",
-          "desc": "信任關係目標的公鑰",
-          "type": "string"
-        }
-      ],
-      "return-type": "string"
-    },
-    {
-      "id": "get-last-update-time",
-      "name": "獲取最後更新時間",
-      "description": "獲取信任關係的最後更新時間戳",
-      "category": "data-access",
-      "params": [
-        {
-          "id": "ikey",
-          "name": "發起者公鑰",
-          "desc": "信任關係發起者的公鑰",
-          "type": "string"
-        },
-        {
-          "id": "target-key",
-          "name": "目標公鑰",
-          "desc": "信任關係目標的公鑰",
-          "type": "string"
-        }
-      ],
-      "return-type": "number"
-    },
-    {
-      "id": "get-public-key",
-      "name": "從私鑰獲取公鑰",
-      "description": "從私鑰推導對應的公鑰",
-      "category": "key-operations",
-      "params": [
-        {
-          "id": "private-key",
-          "name": "私鑰",
-          "desc": "要推導公鑰的私鑰",
-          "type": "string"
-        }
-      ],
-      "return-type": "string"
-    },
-    {
-      "id": "last-path",
-      "expressionName": "LastPath",
-      "category": "query",
-      "returnType": "string"
-    },
-    {
-      "id": "last-file",
-      "expressionName": "LastFile",
-      "category": "query",
-      "returnType": "string"
-    },
-    {
-      "id": "get-enable-log",
-      "expressionName": "GetEnableLog",
-      "category": "data-access",
-      "returnType": "number"
-    },
-    {
-      "id": "get-query-success",
-      "expressionName": "GetQuerySuccess",
-      "category": "query",
-      "returnType": "number"
-    }
+    { "id": "last-path", "expressionName": "LastPath", "category": "query", "returnType": "string" },
+    { "id": "last-file", "expressionName": "LastFile", "category": "query", "returnType": "string" },
+    { "id": "get-default-need-verify", "expressionName": "GetDefaultNeedVerify", "category": "query", "returnType": "number" },
+    { "id": "get-enable-log", "expressionName": "GetEnableLog", "category": "data-access", "returnType": "number" },
+    { "id": "get-query-success", "expressionName": "GetQuerySuccess", "category": "query", "returnType": "number" }
   ]
-} 
+}

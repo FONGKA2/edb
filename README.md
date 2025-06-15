@@ -21,7 +21,7 @@
 5. **Set Default Need Verify**: 設定默認MD5驗證設定
 6. **Set Enable Log**: 設定是否啟用日誌
 7. **Clear Results**: 清除查詢結果
-8. **Set Database**: 根據指定名稱設定資料庫物件
+8. **Set Database**: 指定 Dexie 全域名稱
 
 ### 條件 (Conditions)
 
@@ -126,7 +126,7 @@
 
 
 2. **在事件表中**:
-   - 使用「Set Database」動作設定資料庫，參數設定為 "db"
+   - 使用「Set Database」動作設定資料庫，傳入 Dexie 的全域名稱 (例如 "db")
    - 使用「Query Path With Verify」查詢文件，參數：
      - Path: "path/to/file.txt"
      - Need Verify: 1
