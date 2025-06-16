@@ -20,8 +20,10 @@
 4. **Query Multiple Paths With Callback**: 查詢多個路徑並通過回調函數返回結果
 5. **Set Default Need Verify**: 設定默認MD5驗證設定
 6. **Set Enable Log**: 設定是否啟用日誌
+
 7. **Clear Results**: 清除查詢結果
-8. **Set Database**: 指定 Dexie 實例或其全域名稱
+8. **Set Database**: 指定 Dexie 全域名稱
+
 
 ### 條件 (Conditions)
 
@@ -126,7 +128,9 @@
 
 
 2. **在事件表中**:
-   - 使用「Set Database」動作設定資料庫，可傳入 Dexie 實例或其名稱 (例如 "db")
+
+   - 使用「Set Database」動作設定資料庫，傳入 Dexie 的全域名稱 (例如 "db")
+
    - 使用「Query Path With Verify」查詢文件，參數：
      - Path: "path/to/file.txt"
      - Need Verify: 1
