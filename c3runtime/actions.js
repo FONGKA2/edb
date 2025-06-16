@@ -3,7 +3,10 @@
 C3.Plugins.Eponesh_DexieQuery.Acts = {
     SetDatabase(name)
     {
-        this._db = globalThis[name] || null;
+        if (typeof name === "string")
+            this._db = globalThis[name] || null;
+        else
+            this._db = null;
     },
 
     SetEnableLog(enable)
