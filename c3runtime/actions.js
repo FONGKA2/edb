@@ -1,8 +1,12 @@
 "use strict";
 
 C3.Plugins.Eponesh_DexieQuery.Acts = {
+    SetDatabase(db)
+    {
+
     SetDatabase(name)
     {
+        this._db = globalThis[name] || null;
         if (typeof name === "string")
             this._db = globalThis[name] || null;
         else
